@@ -8,5 +8,7 @@
 </head>
 <body>
 <h1>Welcome to spring boot crud operation using JSP</h1>
+
+<a href = "/register"> Click here  for new Registration</a>
 </body>
 </html>
