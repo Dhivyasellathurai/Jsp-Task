@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -67,10 +68,27 @@ public class BookController {
 		return "updateBook";
 	}
 
-	@PutMapping("/updateBookDetails")
+	@PostMapping("/updateBookDetails")
 	@ResponseBody
 	private String updateBook(Book book) {
 		bookRepository.saveAndFlush(book);
 		return "Book Updated successfully";
+	}
+
+	@GetMapping("/deleteBook")
+	private String deleteBook() {
+		return "deleteBook";
+	}
+
+	@GetMapping("/deleteBookById")
+	@ResponseBody
+	private String deleteBook(@RequestParam(value = "id", required = true) Integer id) {
+		Optional<Book> optional = bookRepository.findById(id);
+		if (optional.isPresent()) {
+			bookRepository.deleteById(id);
+			return "Book deleted successfully";
+		} else {
+			return "Book not found";
+		}
 	}
 }

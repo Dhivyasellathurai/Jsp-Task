@@ -9,7 +9,7 @@
 <body>
 <h1>Update Page</h1>
 Enter the book details
-	<form action="/updateBookDetails" method="put">
+	<form action="/updateBookDetails" method="post">
 		Book ID : <input type="text" name="id"> <br> <br>
 		Book no : <input type="text" name="isbn"> <br> <br>
 		Book name : <input type="text" name="name"> <br> <br>
